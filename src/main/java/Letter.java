@@ -8,12 +8,12 @@ public class Letter {
 //{"A", "B", "C", "D", "E", "F", "G", "H", "I", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "V", "X", "Y", "Z"}
 
 
-        public static char ComputerLetter(){
+        public static char computerLetter(){
             Random rnd = new Random();
             return (char)(rnd.nextInt((90 - 65) + 1) + 65);
         }
 
-        public static boolean CheckLengthString(String inputString){
+        public static boolean checkLengthString(String inputString){
             if(inputString.length() > 1) {
                 System.out.println("Error! String has more than one letter!");
                 return false;
@@ -22,11 +22,11 @@ public class Letter {
             }
         }
 
-        public static boolean CheckLatinLetter(char letter){
+        public static boolean checkLatinLetter(char letter){
             return (int)letter < 65 || (int)letter > 90;
         }
 
-        public static boolean CompareLetter(int a , int b)
+        public static boolean compareLetter(int a , int b)
         {
             if(a == b){
                 System.out.println("YOU WON!!!");
@@ -39,7 +39,7 @@ public class Letter {
             }
         }
 
-        public static boolean LowHightLetter(int a , int b)
+        public static boolean lowHightLetter(int a , int b)
         {
             if(a > b){
                 System.out.println("Too high!");
@@ -52,6 +52,19 @@ public class Letter {
             }
         }
 
+        public static void messageStartGame()
+        {
+            System.out.println("Game Guess the letter");
+            System.out.println("Please enter the letter: ");
+        }
+
+        public static void messageWrongAlphabet()
+        {
+            System.out.println("Please to get acquainted with the " +
+                    "rule of the game, it's not a symbol of Latin " +
+                    "alphabet, enter symbol one more times");
+        }
+
 
         public static void main(String[] args) {
 
@@ -59,10 +72,8 @@ public class Letter {
             char userLetter;
             String inputString = "";
 
-            char compLetter = ComputerLetter();
-
-            System.out.println("Game Guess the letter");
-            System.out.println("Please enter the letter: ");
+            char compLetter = computerLetter();
+            messageStartGame();
 
             Scanner scanner = new Scanner(System.in);
 
@@ -72,20 +83,19 @@ public class Letter {
                 inputString = scanner.next();
                 userLetter = inputString.charAt(0);
 
-                if(!CheckLengthString(inputString)){
+                if(!checkLengthString(inputString)){
                     continue;
                 }
 
                 userLetter = Character.toUpperCase(userLetter);
 
-                if(CheckLatinLetter(userLetter)){
-                    System.out.println("Please to get acquainted with the rule of the game, it's not a symbol of Latin alphabet");
-                    System.out.println("Enter one more times");
+                if(checkLatinLetter(userLetter)){
+                    messageWrongAlphabet();
                     continue;
                 }
 
-                CompareLetter((int)userLetter,(int)compLetter);
-                LowHightLetter((int)userLetter,(int)compLetter);
+                compareLetter((int)userLetter,(int)compLetter);
+                lowHightLetter((int)userLetter,(int)compLetter);
 
             } while (userLetter != compLetter);
 

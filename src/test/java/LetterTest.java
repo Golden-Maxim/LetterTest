@@ -10,7 +10,7 @@ import java.util.Random;
 
 public class LetterTest {
     @Test
-    public void TestComputerLetter() {
+    public void testComputerLetter() {
 
         int testLetter[] = new int[25];
         for (int i = 65, j = 0; i < 90; i++, j++) {
@@ -18,7 +18,7 @@ public class LetterTest {
         }
 
         for (int i = 0; i < testLetter.length; i++) {
-            if (Letter.ComputerLetter() == (char) testLetter[i]) {
+            if (Letter.computerLetter() == (char) testLetter[i]) {
                 System.out.println("The method ComputerLetter is correct");
             }
 
@@ -27,29 +27,29 @@ public class LetterTest {
     }
 
     @Test
-    public void TestLenghtString()
+    public void testLenghtString()
     {
         String incorrectStr = "ABC";
         String correctStr = "A";
-      /*  if(Letter.CheckLengthString(str)) {
-            System.out.println("it's working wrong");
-        }else System.out.println("The method LengthString is correct");*/
-      Assert.assertFalse(Letter.CheckLengthString(incorrectStr));
-      Assert.assertTrue(Letter.CheckLengthString(correctStr));
+      Assert.assertFalse(Letter.checkLengthString(incorrectStr));
+      Assert.assertTrue(Letter.checkLengthString(correctStr));
 
     }
 
     @Test
-    public void TestCompareLetter()
+    public void testCompareLetter()
     {
-       Assert.assertTrue(Letter.CompareLetter(4,4));
-       Assert.assertFalse(Letter.CompareLetter(4,1));
+       Assert.assertTrue(Letter.compareLetter(4,4));
+       Assert.assertFalse(Letter.compareLetter(4,1));
     }
 
     @Test
-    public void TestLowHightLetter() {
-        Assert.assertTrue(Letter.LowHightLetter(10,7));
-        Assert.assertFalse(Letter.LowHightLetter(3,5));
+    public void testLowHightLetter() {
+        Assert.assertTrue(Letter.lowHightLetter(10,7));
+        Assert.assertFalse(Letter.lowHightLetter(3,5));
+
     }
+
+
 
 }
